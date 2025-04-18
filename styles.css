@@ -147,3 +147,24 @@ footer {
   transform: scale(1.05);
   box-shadow: 0 0 30px #7289da;
 }
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body > *:not(.stars):not(.stars2):not(.stars3) {
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Discord Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px #7289da, 0 0 20px #7289da; }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px #7289da, 0 0 30px #7289da; }
+  100% { transform: scale(1); box-shadow: 0 0 10px #7289da, 0 0 20px #7289da; }
+}
+
+.discord-link {
+  animation: pulse 2s infinite;
+}

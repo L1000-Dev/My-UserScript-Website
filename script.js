@@ -30,6 +30,6 @@ window.onload = () => {
   if (savedKey && window.validKeys && window.validKeys.includes(savedKey)) {
     window.location.href = returnUrl;
   } else {
-    updateTimer(30);
+    updateTimer(30); // ✅ this now waits until everything is loaded
   }
 };

@@ -1,34 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <link rel="icon" type="image/png" href="your-logo.png">
-  <meta charset="UTF-8" />
-  <title>Galaxy Script Access</title>
+  <title>Mod Script Access</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Glowing Title Bar -->
-  <header>
-    <h1>🚀 Galaxy Script Portal</h1>
-    <p>Access your mods with a valid key or wait for the warp to complete</p>
-  </header>
+  <h1>Welcome to the Mod Access Portal</h1>
+  <p>Wait <span id="timer">30</span> seconds or use a key to skip.</p>
+  <button onclick="skipWithKey()">Enter Key</button>
 
-  <!-- Side Ads -->
-  <div class="ad left-ad">
-    <iframe src="https://adsterra.com/demo-banner" width="160" height="600" frameborder="0" scrolling="no"></iframe>
-  </div>
-
-  <div class="main">
-    <div class="content-box">
-      <h2>🌠 Redirecting to Krunker in <span id="timer">30</span> seconds...</h2>
-      <button onclick="skipWithKey()">🚪 Enter Key</button>
-    </div>
-  </div>
-
-  <div class="ad right-ad">
-    <iframe src="https://adsterra.com/demo-banner" width="160" height="600" frameborder="0" scrolling="no"></iframe>
-  </div>
-
+  <!-- These must be in this order -->
   <script src="keys.js"></script>
   <script src="script.js"></script>
 </body>

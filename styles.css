@@ -137,6 +137,13 @@ footer {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+footer .discord-box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .buy-key-link {
   display: inline-block;
   font-size: 1.5rem;
@@ -145,15 +152,16 @@ footer {
   color: white;
   border-radius: 12px;
   text-decoration: none;
-  margin-left: 20px;
   box-shadow: 0 0 20px #ff4c4c;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pulse 2s infinite;
 }
 
 .buy-key-link:hover {
   transform: scale(1.05);
   box-shadow: 0 0 30px #ff4c4c;
 }
+
 
 .discord-link:hover {
   transform: scale(1.05);

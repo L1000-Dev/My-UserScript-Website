@@ -8,11 +8,22 @@
   <script defer src="script.js"></script>
   <style>
     body {
-      background-color: black;
+      background: radial-gradient(circle at center, #000000 40%, #0a0a0a 100%);
+      overflow-x: hidden;
+    }
+
+    .stars, .stars2, .stars3 {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-repeat: repeat;
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
 
     .buy-key-content {
-      background: white;
+      background: rgba(255, 255, 255, 0.95);
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 0 40px #ff4c4c;
@@ -20,6 +31,8 @@
       max-width: 600px;
       margin: auto;
       color: black;
+      position: relative;
+      z-index: 1;
     }
 
     .buy-key-content h2 {
@@ -31,10 +44,9 @@
     .buy-key-content p {
       font-size: 1.2rem;
       margin: 20px 0;
-      color: black;
     }
 
-    .buy-key-content .paypal-button {
+    .paypal-button {
       padding: 12px 30px;
       font-size: 1.2rem;
       border: none;
@@ -48,7 +60,7 @@
       margin-top: 20px;
     }
 
-    .buy-key-content .paypal-button:hover {
+    .paypal-button:hover {
       background: #005fa3;
       box-shadow: 0 0 30px #0070ba;
     }
@@ -63,19 +75,27 @@
       margin-top: 30px;
       display: inline-block;
       font-size: 1rem;
-      color: #00f0ff;
+      color: #0099cc;
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
     .back-link:hover {
-      color: #ffffff;
-      text-shadow: 0 0 10px #00f0ff;
+      color: #00ccee;
+      text-shadow: 0 0 10px #00ccee;
+    }
+
+    #fallingStars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
-  <!-- Star layers and canvas -->
+  <!-- Star background layers -->
   <div class="stars"></div>
   <div class="stars2"></div>
   <div class="stars3"></div>
@@ -87,7 +107,7 @@
     <p>Unlock premium features instantly</p>
   </header>
 
-  <!-- Purchase Content -->
+  <!-- Main Content -->
   <div class="main">
     <div class="buy-key-content">
       <h2>Purchase Access</h2>
@@ -102,7 +122,7 @@
     </div>
   </div>
 
-  <!-- Footer Navigation -->
+  <!-- Footer -->
   <footer>
     <div class="discord-box">
       <a class="discord-link" href="https://discord.gg/YOURINVITE" target="_blank">Join Discord</a>

@@ -258,3 +258,11 @@ body > *:not(.stars):not(.stars2):not(.stars3) {
   box-shadow: 0 0 5px 2px white;
   opacity: 0.8;
 }
+
+@keyframes starFlicker {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+.static-star {
+  animation: starFlicker 3s infinite ease-in-out;
+}

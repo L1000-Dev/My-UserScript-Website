@@ -17,7 +17,7 @@ const interval = setInterval(() => {
 
 // --- FALLING STARS ANIMATION ---
 const canvas = document.getElementById('fallingStars');
-const numStaticStars = 150;
+const numStaticStars = 250;
 
 // Set up static stars once
 for (let i = 0; i < numStaticStars; i++) {
@@ -47,7 +47,7 @@ function createShootingStar() {
 
 // Randomly create shooting stars every 5–10 seconds
 setInterval(() => {
-  if (Math.random() < 0.3) { // ~30% chance every interval
+  if (Math.random() < 0.4) { // ~4% chance per frame
     createShootingStar();
   }
 }, 3000);

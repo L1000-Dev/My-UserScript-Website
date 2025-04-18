@@ -2,60 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Redirecting to Krunker...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
   <link rel="stylesheet" href="styles.css" />
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const returnUrl = new URLSearchParams(window.location.search).get("return") || "https://krunker.io";
-
-    // If the access key is already set, skip the timer
-    if (localStorage.getItem("accessKey")) {
-      window.location.href = returnUrl;
-      return;
-    }
-
-    const timerDisplay = document.getElementById("timer");
-    let seconds = 30;
-    timerDisplay.textContent = seconds;
-
-    const interval = setInterval(() => {
-      seconds--;
-      if (seconds <= 0) {
-        clearInterval(interval);
-        localStorage.setItem("accessKey", "true");
-        window.location.href = returnUrl;
-      } else {
-        timerDisplay.textContent = seconds;
-      }
-    }, 1000);
-  });
-</script>
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- Galaxy-Themed Header -->
   <header>
-    <h1>Welcome, Space Traveler!</h1>
-    <p>You’re being redirected to your destination in the galaxy…</p>
+    <h1>Hold Tight...</h1>
+    <p>You’ll be redirected shortly</p>
   </header>
 
-  <!-- Ads (Optional) -->
+  <!-- Centered Main Content -->
+  <div class="main">
+    <div class="content-box">
+      <h2>Redirecting you back to Krunker in <span id="timer">30</span> seconds...</h2>
+    </div>
+  </div>
+
+  <!-- Optional Ads (styled in your CSS) -->
   <div class="ad left-ad">
-    <img src="https://via.placeholder.com/160x600?text=Left+Ad" alt="Left Ad" />
+    <!-- Example Ad Image -->
+    <img src="https://via.placeholder.com/160x600?text=Ad+Left" alt="Ad Left" />
   </div>
   <div class="ad right-ad">
-    <img src="https://via.placeholder.com/160x600?text=Right+Ad" alt="Right Ad" />
+    <!-- Example Ad Image -->
+    <img src="https://via.placeholder.com/160x600?text=Ad+Right" alt="Ad Right" />
   </div>
-
-  <!-- Main Content -->
-  <div class="main">
-  <div class="content-box">
-    <h2>Redirecting in <span id="timer">30</span> seconds...</h2>
-    <p>Thank you for visiting our launch terminal.</p>
-    <button onclick="localStorage.setItem('accessKey', 'true'); window.location.href='https://krunker.io'">
-      Go Now
-    </button>
-  </div>
-</div>
-
 </body>
 </html>

@@ -18,6 +18,7 @@ const interval = setInterval(() => {
 // --- FALLING STARS ANIMATION ---
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("fallingStars");
+  console.log("Stars script loaded");
 
   // Create static stars
   for (let i = 0; i < 100; i++) {

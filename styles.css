@@ -1,60 +1,38 @@
+/* Background Galaxy */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  color: #fff;
-  background: url('https://images.unsplash.com/photo-1447433819943-74a20887a2f6?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background: url('https://images.unsplash.com/photo-1477201544970-5d08f4d832c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.main {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 2rem 3rem;
-  border-radius: 20px;
-  text-align: center;
-  z-index: 10;
-  box-shadow: 0 0 20px #00f7ff;
-}
-
-h1 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
-}
-
-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1.5rem;
-  background-color: #1f1fff;
-  border: none;
-  border-radius: 10px;
   color: white;
-  cursor: pointer;
+}
+
+/* Title Header */
+header {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 0 30px #00f0ff;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+header p {
   font-size: 1rem;
-  transition: background 0.3s ease;
+  margin-top: 5px;
+  color: #ccc;
 }
 
-button:hover {
-  background-color: #0d0ddc;
-}
-
+/* Ads */
 .ad {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 200px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-weight: bold;
-  font-size: 1.2rem;
+  position: fixed;
+  top: 100px;
+  width: 160px;
 }
 
 .left-ad {
@@ -63,4 +41,43 @@ button:hover {
 
 .right-ad {
   right: 0;
+}
+
+/* Main Content Centered */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+/* Content Box */
+.content-box {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px #00f0ff;
+  text-align: center;
+  max-width: 600px;
+}
+
+.content-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background: #00f0ff;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #00c0dd;
+  box-shadow: 0 0 10px #00f0ff;
 }

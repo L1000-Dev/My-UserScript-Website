@@ -17,41 +17,29 @@ const interval = setInterval(() => {
 
 // --- FALLING STARS ANIMATION ---
 document.addEventListener("DOMContentLoaded", () => {
-  const starContainer = document.getElementById("fallingStars");
+  const container = document.getElementById("fallingStars");
 
-  function createStar(shooting = false) {
-    const star = document.createElement("div");
-    star.classList.add(shooting ? "shooting-star" : "star");
-
-    const size = shooting ? 2 : Math.random() * 2 + 1;
-    star.style.width = `${size}px`;
-    star.style.height = `${size}px`;
-
-    const x = Math.random() * window.innerWidth;
-    const y = shooting ? -20 : Math.random() * window.innerHeight;
-
-    star.style.left = `${x}px`;
-    star.style.top = `${y}px`;
-
-    if (shooting) {
-      star.style.animation = `shoot ${Math.random() * 1.5 + 1.5}s linear forwards`;
-      setTimeout(() => {
-        star.remove();
-      }, 3000);
-    }
-
-    starContainer.appendChild(star);
-  }
-
-  // Create 100 static stars
+  // Create static stars
   for (let i = 0; i < 100; i++) {
-    createStar(false);
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.left = `${Math.random() * 100}%`;
+    container.appendChild(star);
   }
 
-  // Occasionally spawn a shooting star
+  // Spawn a rare shooting star
   setInterval(() => {
-    if (Math.random() < 0.2) { // 20% chance every 2 seconds
-      createStar(true);
+    if (Math.random() < 0.2) { // 20% chance every 2s
+      const shootingStar = document.createElement("div");
+      shootingStar.className = "shooting-star";
+      shootingStar.style.top = `${Math.random() * window.innerHeight * 0.3}px`;
+      shootingStar.style.left = `${Math.random() * window.innerWidth}px`;
+      container.appendChild(shootingStar);
+
+      setTimeout(() => {
+        shootingStar.remove();
+      }, 2000);
     }
   }, 2000);
 });

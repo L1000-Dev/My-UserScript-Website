@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const returnUrl = new URLSearchParams(window.location.search).get("return") || "https://krunker.io";
 
@@ -7,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let seconds = 30;
 
   if (!timerDisplay) {
-    console.error("❌ #timer element not found!");
+    console.error("Timer element not found!");
     return;
   }
 

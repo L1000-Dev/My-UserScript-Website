@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Galaxy Key Gate</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Galaxy Script Access</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Glowing Title Bar -->
+  <header>
+    <h1>🚀 Galaxy Script Portal</h1>
+    <p>Access your mods with a valid key or wait for the warp to complete</p>
+  </header>
+
+  <!-- Side Ads -->
   <div class="ad left-ad">
-    <!-- Adsterra Test Ad -->
     <iframe src="https://adsterra.com/demo-banner" width="160" height="600" frameborder="0" scrolling="no"></iframe>
   </div>
 
   <div class="main">
-    <h1>Welcome, Traveler 🌌</h1>
-    <p>Teleporting to Krunker in <span id="timer">30</span> seconds...</p>
-    <button onclick="skipWithKey()">Enter Key</button>
+    <div class="content-box">
+      <h2>🌠 Redirecting to Krunker in <span id="timer">30</span> seconds...</h2>
+      <button onclick="skipWithKey()">🚪 Enter Key</button>
+    </div>
   </div>
 
   <div class="ad right-ad">
-    <!-- Adsterra Test Ad -->
     <iframe src="https://adsterra.com/demo-banner" width="160" height="600" frameborder="0" scrolling="no"></iframe>
   </div>
 
-  <!-- ✅ Load keys first, then logic -->
   <script src="keys.js"></script>
   <script src="script.js"></script>
 </body>

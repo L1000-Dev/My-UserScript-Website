@@ -16,31 +16,38 @@ const interval = setInterval(() => {
 }, 1000);
 
 // --- FALLING STARS ANIMATION ---
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("fallingStars");
-  console.log("Stars script loaded");
+const canvas = document.getElementById('fallingStars');
+const numStaticStars = 150;
 
-  // Create static stars
-  for (let i = 0; i < 100; i++) {
-    const star = document.createElement("div");
-    star.className = "star";
-    star.style.top = `${Math.random() * 100}%`;
-    star.style.left = `${Math.random() * 100}%`;
-    container.appendChild(star);
-  }
+// Set up static stars once
+for (let i = 0; i < numStaticStars; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = `${Math.random() * 100}%`;
+  star.style.top = `${Math.random() * 100}%`;
+  star.style.opacity = Math.random() * 0.8 + 0.2;
+  star.style.width = `${Math.random() * 2 + 1}px`;
+  star.style.height = star.style.width;
+  canvas.appendChild(star);
+}
 
-  // Spawn a rare shooting star
-  setInterval(() => {
-    if (Math.random() < 0.2) { // 20% chance every 2s
-      const shootingStar = document.createElement("div");
-      shootingStar.className = "shooting-star";
-      shootingStar.style.top = `${Math.random() * window.innerHeight * 0.3}px`;
-      shootingStar.style.left = `${Math.random() * window.innerWidth}px`;
-      container.appendChild(shootingStar);
+// Function to spawn a shooting star occasionally
+function createShootingStar() {
+  const shootingStar = document.createElement('div');
+  shootingStar.className = 'shooting-star';
+  shootingStar.style.left = `${Math.random() * window.innerWidth}px`;
+  shootingStar.style.top = `${Math.random() * window.innerHeight * 0.5}px`;
+  canvas.appendChild(shootingStar);
 
-      setTimeout(() => {
-        shootingStar.remove();
-      }, 2000);
-    }
+  // Remove after animation ends
+  setTimeout(() => {
+    canvas.removeChild(shootingStar);
   }, 2000);
-});
+}
+
+// Randomly create shooting stars every 5–10 seconds
+setInterval(() => {
+  if (Math.random() < 0.3) { // ~30% chance every interval
+    createShootingStar();
+  }
+}, 3000);

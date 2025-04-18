@@ -19,8 +19,7 @@ function skipWithKey() {
   const key = prompt("Enter your key:");
   if (!key) return;
 
-  const validKeys = window.validKeys || [];
-  if (validKeys.includes(key)) {
+  if (Array.isArray(window.validKeys) && window.validKeys.includes(key)) {
     localStorage.setItem("accessKey", key);
     window.location.href = returnUrl;
   } else {
@@ -29,11 +28,17 @@ function skipWithKey() {
 }
 
 window.onload = () => {
-  const savedKey = localStorage.getItem("accessKey");
+  const waitForKeys = setInterval(() => {
+    if (Array.isArray(window.validKeys)) {
+      clearInterval(waitForKeys);
 
-  if (savedKey && window.validKeys && window.validKeys.includes(savedKey)) {
-    window.location.href = returnUrl;
-  } else {
-    updateTimer(30); // ✅ Starts countdown at 30
-  }
+      const savedKey = localStorage.getItem("accessKey");
+
+      if (window.validKeys.includes(savedKey)) {
+        window.location.href = returnUrl;
+      } else {
+        updateTimer(30);
+      }
+    }
+  }, 100);
 };

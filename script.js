@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const interval = setInterval(() => {
     seconds--;
+    timerDisplay.textContent = seconds;
+
     if (seconds <= 0) {
       clearInterval(interval);
       window.location.href = returnUrl;
-    } else {
-      timerDisplay.textContent = seconds;
     }
   }, 1000);
 });

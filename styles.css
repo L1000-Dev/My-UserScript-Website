@@ -223,9 +223,20 @@ body > *:not(.stars):not(.stars2):not(.stars3) {
   height: 2px;
   background: white;
   border-radius: 50%;
-  box-shadow: 0 0 4px 1px white; /* reduce the glow */
-  animation: shoot 4s linear forwards; /* slow it down */
-  opacity: 0.8;
+  box-shadow: 0 0 6px 3px white;
+  animation: shoot 4s linear forwards;
+  opacity: 0.9;
+}
+
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(to right, white, transparent);
+  opacity: 0.5;
 }
 @keyframes shoot {
   0% {

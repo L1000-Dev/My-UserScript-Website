@@ -81,3 +81,32 @@ button:hover {
   background: #00c0dd;
   box-shadow: 0 0 10px #00f0ff;
 }
+
+/* Discord Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -2px 20px #00f0ff;
+}
+
+.discord-box {
+  color: white;
+  font-size: 1rem;
+}
+
+.discord-link {
+  color: #00f0ff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: color 0.3s;
+}
+
+.discord-link:hover {
+  color: #00c0dd;
+  text-shadow: 0 0 5px #00f0ff;
+}

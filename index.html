@@ -1,17 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mod Script Access</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirecting to Krunker...</title>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Extract return URL from query (fallback to Krunker)
+    const returnUrl = new URLSearchParams(window.location.search).get("return") || "https://krunker.io";
+
+    function updateTimer(seconds) {
+      const timerDisplay = document.getElementById("timer");
+      timerDisplay.textContent = seconds;
+
+      const interval = setInterval(() => {
+        seconds--;
+        if (seconds <= 0) {
+          clearInterval(interval);
+          localStorage.setItem("accessKey", "true");
+          window.location.href = returnUrl;
+        } else {
+          timerDisplay.textContent = seconds;
+        }
+      }, 1000);
+    }
+
+    window.onload = () => {
+      updateTimer(30);
+    };
+  </script>
 </head>
 <body>
-  <h1>Welcome to the Mod Access Portal</h1>
-  <p>Wait <span id="timer">30</span> seconds or use a key to skip.</p>
-  <button onclick="skipWithKey()">Enter Key</button>
-  <body onload="updateTimer(30)">
+  <header>
+    <h1>Welcome, Cheater!</h1>
+    <p>You’re being redirected to your destination</p>
+  </header>
 
-  <!-- These must be in this order -->
-  <script src="keys.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+  <!-- Ads (Optional) -->
+  <div class="ad left-ad">
+    <img src="https://via.placeholder.com/160x600?text=Left+Ad" alt="Left Ad" />
+  </div>
+  <div class="ad right-ad">
+    <img src="https://via.placeholder.com/160x600?text=Right+Ad" alt="Right Ad" />
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="content-box">
+      <h2>Redirecting in <span id="timer">30</span> seconds...</h2>
+      <p>Thank

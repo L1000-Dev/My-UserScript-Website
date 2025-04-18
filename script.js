@@ -9,6 +9,7 @@ function updateTimer(seconds) {
     if (seconds <= 0) {
       clearInterval(interval);
       console.log("✅ Timer finished, redirecting...");
+      localStorage.setItem("accessKey", "true");
       window.location.href = returnUrl;
     } else {
       timerDisplay.textContent = seconds;

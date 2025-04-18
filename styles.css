@@ -200,3 +200,40 @@ body > *:not(.stars):not(.stars2):not(.stars3) {
     opacity: 0;
   }
 }
+
+#fallingStars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.shooting-star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  box-shadow: 0 0 6px 3px white;
+  animation: shoot 2s linear forwards;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-200px, 200px);
+    opacity: 0;
+  }
+}

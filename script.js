@@ -17,7 +17,7 @@ async function skipWithKey() {
   if (!key) return;
 
   try {
-    const res = await fetch("https://L-1000.github.io/your-repo-name/keys.json");
+    const res = await fetch("https://github.com/L1000-Dev/My-UserScript-Website/blob/main/keys.json");
     const validKeys = await res.json();
 
     if (validKeys.includes(key)) {

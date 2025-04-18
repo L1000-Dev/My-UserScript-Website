@@ -25,53 +25,51 @@ canvas.height = window.innerHeight;
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  drawStaticStars(); // re-draw static stars on resize
 });
 
-const fallingStars = [];
+const staticStars = [];
 const shootingStars = [];
 
-// Create regular falling stars
-for (let i = 0; i < 100; i++) {
-  fallingStars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 2 + 1,
-    speedY: Math.random() * 1 + 0.5,
-    opacity: Math.random() * 0.5 + 0.3
-  });
+// Create static background stars
+function drawStaticStars() {
+  staticStars.length = 0;
+  for (let i = 0; i < 200; i++) {
+    staticStars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2 + 0.5,
+      opacity: Math.random() * 0.5 + 0.2
+    });
+  }
 }
+drawStaticStars();
 
-// Spawn a rare shooting star
+// Spawn shooting stars every few seconds
 function spawnShootingStar() {
   shootingStars.push({
     x: Math.random() * canvas.width * 0.8,
-    y: 0,
-    length: Math.random() * 80 + 40,
-    speedX: Math.random() * 10 + 10,
+    y: Math.random() * canvas.height * 0.3,
+    length: Math.random() * 100 + 50,
+    speedX: Math.random() * 15 + 10,
     speedY: Math.random() * 5 + 3,
     life: 0,
     maxLife: 60
   });
 
-  setTimeout(spawnShootingStar, Math.random() * 6000 + 4000); // 4–10 sec
+  setTimeout(spawnShootingStar, Math.random() * 5000 + 5000); // 5–10 sec
 }
 spawnShootingStar();
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Draw regular falling stars
-  for (let star of fallingStars) {
+  // Draw static stars
+  for (let star of staticStars) {
     ctx.beginPath();
     ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
     ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
     ctx.fill();
-
-    star.y += star.speedY;
-    if (star.y > canvas.height) {
-      star.y = -10;
-      star.x = Math.random() * canvas.width;
-    }
   }
 
   // Draw shooting stars

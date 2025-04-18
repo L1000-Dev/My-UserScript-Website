@@ -8,9 +8,11 @@ function updateTimer(seconds) {
     seconds--;
     if (seconds <= 0) {
       clearInterval(interval);
+      console.log("✅ Timer finished, redirecting...");
       window.location.href = returnUrl;
     } else {
       timerDisplay.textContent = seconds;
+      console.log(`⏳ ${seconds}s remaining`);
     }
   }, 1000);
 }
@@ -21,38 +23,37 @@ function skipWithKey() {
 
   const validKeys = window.validKeys || [];
 
+  console.log("🔑 Entered key:", key);
+  console.log("✅ Available keys:", validKeys);
+
   if (validKeys.includes(key)) {
     localStorage.setItem("accessKey", key);
+    console.log("✅ Key valid, redirecting...");
     window.location.href = returnUrl;
   } else {
     alert("❌ Could not verify key. Try again later.");
+    console.log("❌ Invalid key");
   }
 }
 
-function waitForKeysAndStart() {
-  const maxWaitTime = 5000; // max 5 seconds
-  const startTime = Date.now();
-
-  const check = () => {
+window.addEventListener("load", () => {
+  const waitForKeys = setInterval(() => {
     if (Array.isArray(window.validKeys)) {
+      clearInterval(waitForKeys);
+      console.log("✅ Keys loaded:", window.validKeys);
+
       const savedKey = localStorage.getItem("accessKey");
+      console.log("🔒 Saved key:", savedKey);
 
       if (savedKey && window.validKeys.includes(savedKey)) {
+        console.log("✅ Saved key is valid, redirecting...");
         window.location.href = returnUrl;
       } else {
+        console.log("⏳ No valid key, starting timer...");
         updateTimer(30);
       }
     } else {
-      if (Date.now() - startTime < maxWaitTime) {
-        setTimeout(check, 100);
-      } else {
-        // Fallback: start timer anyway
-        updateTimer(30);
-      }
+      console.log("⌛ Waiting for keys...");
     }
-  };
-
-  check();
-}
-
-window.addEventListener("load", waitForKeysAndStart);
+  }, 100);
+});

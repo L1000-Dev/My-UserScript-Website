@@ -226,6 +226,7 @@ body > *:not(.stars):not(.stars2):not(.stars3) {
   box-shadow: 0 0 6px 3px white;
   animation: shoot 4s linear forwards;
   opacity: 0.9;
+  transform: rotate(-45deg); /* Match the angle of motion */
 }
 
 .shooting-star::after {
@@ -235,9 +236,11 @@ body > *:not(.stars):not(.stars2):not(.stars3) {
   left: 0;
   width: 150px;
   height: 2px;
-  background: linear-gradient(to right, white, transparent);
+  background: linear-gradient(to left, white, transparent);
   opacity: 0.5;
+  transform: rotate(0deg);
 }
+
 @keyframes shoot {
   0% {
     transform: translate(0, 0);

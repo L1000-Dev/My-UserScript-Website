@@ -16,61 +16,53 @@ const interval = setInterval(() => {
 }, 1000);
 
 // --- FALLING STARS ANIMATION ---
-const canvas = document.getElementById("fallingStars");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('fallingStars');
+const ctx = canvas.getContext('2d');
 
-let stars = [];
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function resizeCanvas() {
+window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
+});
 
-function createStars(count) {
-  stars = [];
-  for (let i = 0; i < count; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.5,
-      d: Math.random() * 1 + 0.5,
-      opacity: Math.random(),
-    });
-  }
+const stars = [];
+
+for (let i = 0; i < 100; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    length: Math.random() * 20 + 10,
+    speed: Math.random() * 4 + 2,
+    opacity: Math.random() * 0.5 + 0.5
+  });
 }
-createStars(150);
 
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
-  ctx.shadowColor = "#00f0ff";
-  ctx.shadowBlur = 8;
 
-  for (let i = 0; i < stars.length; i++) {
-    const s = stars[i];
+  for (let star of stars) {
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fill();
-  }
+    const gradient = ctx.createLinearGradient(star.x, star.y, star.x - star.length, star.y + star.length);
+    gradient.addColorStop(0, `rgba(255,255,255,${star.opacity})`);
+    gradient.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.strokeStyle = gradient;
+    ctx.moveTo(star.x, star.y);
+    ctx.lineTo(star.x - star.length, star.y + star.length);
+    ctx.lineWidth = 1;
+    ctx.stroke();
 
-  updateStars();
-}
+    star.x -= star.speed;
+    star.y += star.speed;
 
-function updateStars() {
-  for (let i = 0; i < stars.length; i++) {
-    const s = stars[i];
-    s.y += s.d;
-    if (s.y > canvas.height) {
-      s.y = 0;
-      s.x = Math.random() * canvas.width;
+    if (star.y > canvas.height || star.x < 0) {
+      star.x = Math.random() * canvas.width + canvas.width;
+      star.y = Math.random() * -canvas.height;
     }
   }
+
+  requestAnimationFrame(drawStars);
 }
 
-function animateStars() {
-  drawStars();
-  requestAnimationFrame(animateStars);
-}
-animateStars();
+drawStars();

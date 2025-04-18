@@ -34,21 +34,43 @@
       color: black;
     }
 
-    .buy-key-content button {
-      padding: 10px 20px;
+    .buy-key-content .paypal-button {
+      padding: 12px 30px;
       font-size: 1.2rem;
       border: none;
       border-radius: 10px;
-      background: #ff4c4c;
+      background: #0070ba;
       color: white;
       cursor: pointer;
-      box-shadow: 0 0 10px #ff4c4c;
+      box-shadow: 0 0 20px #0070ba;
+      animation: pulsePayPal 2s infinite;
       transition: all 0.3s ease;
+      margin-top: 20px;
     }
 
-    .buy-key-content button:hover {
-      background: #e03a3a;
-      box-shadow: 0 0 20px #ff4c4c;
+    .buy-key-content .paypal-button:hover {
+      background: #005fa3;
+      box-shadow: 0 0 30px #0070ba;
+    }
+
+    @keyframes pulsePayPal {
+      0% { transform: scale(1); box-shadow: 0 0 10px #0070ba, 0 0 20px #0070ba; }
+      50% { transform: scale(1.05); box-shadow: 0 0 20px #0070ba, 0 0 30px #0070ba; }
+      100% { transform: scale(1); box-shadow: 0 0 10px #0070ba, 0 0 20px #0070ba; }
+    }
+
+    .back-link {
+      margin-top: 30px;
+      display: inline-block;
+      font-size: 1rem;
+      color: #00f0ff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #00f0ff;
     }
   </style>
 </head>
@@ -70,7 +92,13 @@
     <div class="buy-key-content">
       <h2>Purchase Access</h2>
       <p>Get your access key and enjoy exclusive features!</p>
-      <button onclick="alert('Payment system coming soon!')">Purchase Key</button>
+      
+      <button class="paypal-button" onclick="alert('Redirecting to PayPal...')">
+        Pay with PayPal
+      </button>
+
+      <br/>
+      <a href="index.html" class="back-link">← Back to Homepage</a>
     </div>
   </div>
 

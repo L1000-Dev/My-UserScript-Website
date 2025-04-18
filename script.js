@@ -29,19 +29,30 @@ function skipWithKey() {
   }
 }
 
-window.addEventListener("load", () => {
-  // Wait until window.validKeys is available
-  const waitForKeys = setInterval(() => {
-    if (Array.isArray(window.validKeys)) {
-      clearInterval(waitForKeys);
+function waitForKeysAndStart() {
+  const maxWaitTime = 5000; // max 5 seconds
+  const startTime = Date.now();
 
+  const check = () => {
+    if (Array.isArray(window.validKeys)) {
       const savedKey = localStorage.getItem("accessKey");
 
-      if (window.validKeys.includes(savedKey)) {
+      if (savedKey && window.validKeys.includes(savedKey)) {
         window.location.href = returnUrl;
       } else {
-        updateTimer(30); // Start timer here
+        updateTimer(30);
+      }
+    } else {
+      if (Date.now() - startTime < maxWaitTime) {
+        setTimeout(check, 100);
+      } else {
+        // Fallback: start timer anyway
+        updateTimer(30);
       }
     }
-  }, 100);
-});
+  };
+
+  check();
+}
+
+window.addEventListener("load", waitForKeysAndStart);

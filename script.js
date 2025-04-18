@@ -19,7 +19,9 @@ function skipWithKey() {
   const key = prompt("Enter your key:");
   if (!key) return;
 
-  if (Array.isArray(window.validKeys) && window.validKeys.includes(key)) {
+  const validKeys = window.validKeys || [];
+
+  if (validKeys.includes(key)) {
     localStorage.setItem("accessKey", key);
     window.location.href = returnUrl;
   } else {
@@ -27,7 +29,8 @@ function skipWithKey() {
   }
 }
 
-window.onload = () => {
+window.addEventListener("load", () => {
+  // Wait until window.validKeys is available
   const waitForKeys = setInterval(() => {
     if (Array.isArray(window.validKeys)) {
       clearInterval(waitForKeys);
@@ -37,8 +40,8 @@ window.onload = () => {
       if (window.validKeys.includes(savedKey)) {
         window.location.href = returnUrl;
       } else {
-        updateTimer(30);
+        updateTimer(30); // Start timer here
       }
     }
   }, 100);
-};
+});

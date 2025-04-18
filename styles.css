@@ -137,6 +137,24 @@ footer {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.buy-key-link {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  background-color: #ff4c4c;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  margin-left: 20px;
+  box-shadow: 0 0 20px #ff4c4c;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buy-key-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #ff4c4c;
+}
+
 .discord-link:hover {
   transform: scale(1.05);
   box-shadow: 0 0 30px #7289da;

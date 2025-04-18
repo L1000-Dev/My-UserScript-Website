@@ -6,33 +6,31 @@
   <title>Redirecting to Krunker...</title>
   <link rel="stylesheet" href="styles.css" />
   <script>
+  document.addEventListener("DOMContentLoaded", () => {
     const returnUrl = new URLSearchParams(window.location.search).get("return") || "https://krunker.io";
 
-    function updateTimer(seconds) {
-      const timerDisplay = document.getElementById("timer");
-      timerDisplay.textContent = seconds;
-
-      const interval = setInterval(() => {
-        seconds--;
-        if (seconds <= 0) {
-          clearInterval(interval);
-          localStorage.setItem("accessKey", "true");
-          window.location.href = returnUrl;
-        } else {
-          timerDisplay.textContent = seconds;
-        }
-      }, 1000);
+    // If the access key is already set, skip the timer
+    if (localStorage.getItem("accessKey")) {
+      window.location.href = returnUrl;
+      return;
     }
 
-    window.onload = () => {
-      // If accessKey is already set, don't show timer again
-      if (localStorage.getItem("accessKey")) {
+    const timerDisplay = document.getElementById("timer");
+    let seconds = 30;
+    timerDisplay.textContent = seconds;
+
+    const interval = setInterval(() => {
+      seconds--;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        localStorage.setItem("accessKey", "true");
         window.location.href = returnUrl;
       } else {
-        updateTimer(30);
+        timerDisplay.textContent = seconds;
       }
-    };
-  </script>
+    }, 1000);
+  });
+</script>
 </head>
 <body>
   <header>

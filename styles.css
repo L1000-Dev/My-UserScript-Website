@@ -224,7 +224,7 @@ body > *:not(.stars):not(.stars2):not(.stars3) {
   background: white;
   border-radius: 50%;
   box-shadow: 0 0 6px 3px white;
-  animation: shoot 4s linear forwards;
+  animation: shoot 7s linear forwards;
   opacity: 0.9;
   transform: rotate(-45deg); /* Match the angle of motion */
 }

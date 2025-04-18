@@ -1,6 +1,8 @@
 let seconds = 30;
 const returnUrl = new URLSearchParams(window.location.search).get("return");
 
+const validKeys = window.validKeys || [];
+
 // Default fallback if no return URL is provided
 const defaultReturn = "https://krunker.io";
 

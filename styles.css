@@ -34,12 +34,6 @@ body {
   to { background-position: -10000px 5000px; }
 }
 
-/* Ensure content appears above stars */
-body > *:not(.stars):not(.stars2):not(.stars3) {
-  position: relative;
-  z-index: 1;
-}
-
 /* Title Header */
 header {
   background: rgba(0, 0, 0, 0.75);

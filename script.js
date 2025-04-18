@@ -1,22 +1,16 @@
 const returnUrl = "https://krunker.io";
 
-window.onload = () => {
-  const savedKey = localStorage.getItem("accessKey");
-  if (savedKey && window.validKeys && window.validKeys.includes(savedKey)) {
-    window.location.href = returnUrl;
-  } else {
-    updateTimer(30); // ✅ this now waits until everything is loaded
-  }
-};
-
 function updateTimer(seconds) {
   const timerDisplay = document.getElementById("timer");
+  timerDisplay.textContent = seconds;
+
   const interval = setInterval(() => {
     seconds--;
-    timerDisplay.textContent = seconds;
     if (seconds <= 0) {
       clearInterval(interval);
       window.location.href = returnUrl;
+    } else {
+      timerDisplay.textContent = seconds;
     }
   }, 1000);
 }
@@ -34,3 +28,12 @@ function skipWithKey() {
   }
 }
 
+window.onload = () => {
+  const savedKey = localStorage.getItem("accessKey");
+
+  if (savedKey && window.validKeys && window.validKeys.includes(savedKey)) {
+    window.location.href = returnUrl;
+  } else {
+    updateTimer(30); // ✅ Starts countdown at 30
+  }
+};

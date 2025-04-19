@@ -70,6 +70,17 @@ header p {
   right: 0;
 }
 
+<style>
+  .ad-right-sidebar {
+    position: fixed;
+    right: 10px;
+    top: 100px;
+    width: 160px;
+    height: 600px;
+    z-index: 9999;
+  }
+</style>
+
 /* Main Content Centered */
 .main {
   display: flex;

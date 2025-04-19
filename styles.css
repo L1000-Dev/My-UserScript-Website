@@ -76,6 +76,15 @@ header p {
   margin: 40px 20px;
 }
 
+.ad-right-sidebar {
+  position: fixed;
+  right: 10px;
+  top: 100px;
+  width: 160px;
+  height: 600px;
+  z-index: 9999;
+}
+
 .ad-right-static {
   width: 160px;
   height: 600px;

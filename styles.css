@@ -70,16 +70,16 @@ header p {
   right: 0;
 }
 
-<style>
-  .ad-right-sidebar {
-    position: fixed;
-    right: 10px;
-    top: 100px;
-    width: 160px;
-    height: 600px;
-    z-index: 9999;
-  }
-</style>
+.ad-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 40px 20px;
+}
+
+.ad-right-static {
+  width: 160px;
+  height: 600px;
+}
 
 /* Main Content Centered */
 .main {

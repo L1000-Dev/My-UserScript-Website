@@ -85,11 +85,6 @@ header p {
   z-index: 9999;
 }
 
-.ad-right-static {
-  width: 160px;
-  height: 600px;
-}
-
 /* Main Content Centered */
 .main {
   display: flex;
